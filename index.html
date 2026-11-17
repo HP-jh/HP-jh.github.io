@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>浮屿 · 岛上套件 下载</title>
+<title>屿 · 桌面信息层</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='22' width='52' height='20' rx='10' fill='%23151c22'/%3E%3Ccircle cx='20' cy='32' r='3' fill='%238cf0dc'/%3E%3C/svg%3E" />
 <style>
 :root{--card:rgba(255,255,255,.045);--line:rgba(160,220,255,.12);--ink:#eef4f8;--dim:rgba(238,244,248,.56);--mint:#8cf0dc}
@@ -15,7 +15,7 @@ body{margin:0;min-height:100vh;color:var(--ink);font-family:"HarmonyOS Sans SC",
   border:1px solid var(--line);box-shadow:0 40px 90px -46px rgba(0,0,0,.95),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(30px) saturate(140%)}
 .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;font-size:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--dim)}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px rgba(140,240,220,.7)}
-h1{margin:20px 0 8px;font-size:34px;font-weight:300;letter-spacing:.5px}
+h1{margin:20px 0 8px;font-size:38px;font-weight:300;letter-spacing:.5px}
 h1 b{font-weight:650}
 .sub{margin:0 0 26px;color:var(--dim);font-size:14px;line-height:1.75}
 .row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
@@ -34,17 +34,17 @@ h1 b{font-weight:650}
 .notes li{margin:2px 0}
 ul{margin:0;padding-left:18px}
 .foot{margin-top:22px;font-size:12px;color:rgba(238,244,248,.38);text-align:center;max-width:680px;line-height:1.7}
-@media (max-width:560px){h1{font-size:26px}.card{padding:24px 20px}.meta{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){h1{font-size:28px}.card{padding:24px 20px}.meta{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
   <main class="card">
     <span class="pill"><i class="dot"></i>Windows · 桌面信息层</span>
-    <h1>浮屿 <b>岛上套件</b></h1>
-    <p class="sub">基于浮屿 Fuyu（Tauri 2 / AGPL-3.0）改造：胶囊 / 面板 / 中心三层，材质随桌面壁纸实时自适应，CPU·内存·GPU·网速·电量·磁盘·温度一张设备卡收完。</p>
+    <h1>屿</h1>
+    <p class="sub">胶囊 / 面板 / 中心三层，材质随桌面壁纸自适应；内核模块化，加能力只需登记一条模块。底层基于 Fuyu（Tauri 2 / AGPL-3.0），界面与信息架构已重做。</p>
 
     <div class="row">
-      <a class="btn" href="https://aka.doubaocdn.com/s/G0CphAD5zP">下载 fuyu.exe</a>
+      <a class="btn" href="https://aka.doubaocdn.com/s/G0CphAD5zP">下载安装包</a>
       <a class="btn ghost" href="https://github.com/HP-jh/HP-jh.github.io/releases">GitHub Releases</a>
     </div>
 
@@ -54,46 +54,46 @@ ul{margin:0;padding-left:18px}
       <div class="stat"><k>系统</k><v>Windows 10 / 11 x64</v></div>
     </div>
 
-    <img class="shot" src="https://aka.doubaocdn.com/s/k86VBqRJV8" alt="岛上套件 · 设备中心" />
+    <img class="shot" src="https://aka.doubaocdn.com/s/coT9pHhGQg" alt="屿 · 中心" />
 
     <div class="notes">
-      <h3>胶囊：鸿蒙式实况窗</h3>
-      <img class="shot small" src="https://aka.doubaocdn.com/s/btBk2xqiis" alt="胶囊双任务" />
+      <h3>三层结构</h3>
+      <img class="shot small" src="https://aka.doubaocdn.com/s/btBk2xqiis" alt="胶囊" />
       <ul>
-        <li>双任务并列：左是日程实况（图标 + 事件 + 倒计时），右是媒体（封面 + 歌名 + 进度 + 波形），中间一条 1px 发丝分隔。</div>
-        <li>整条胶囊 44px 高、全圆角，背景随壁纸从薄荷渐变到洋红也能自己压暗或提亮。</li>
+        <li>胶囊：双任务实况窗（日程 + 媒体），44px 全圆角，低存在感。</li>
+        <li>面板：时间头、文字胶囊页签、议程；点时间头形变展开成中心。</li>
+        <li>中心：设备、待办、通知、笔记，一屏收完；待办与通知可互相转换。</li>
       </ul>
     </div>
 
     <div class="notes" style="margin-top:18px">
-      <h3>三层结构与动效</h3>
+      <h3>内核模块</h3>
       <ul>
-        <li>胶囊 → 面板用一镜到底的形变：从 44px 胶囊按顶部锚点展开成 560px 面板，同步去模糊，内容错峰上浮。</li>
-        <li>面板 → 中心是上滑抽屉：下拉把手、80ms 起的分层入场，设备卡先出，待办与通知跟上。</li>
-        <li>待办、通知、快捷都从面板下沉为独立卡片，面板上不再堆字。</li>
-        <li>按钮 hover 上浮 1px、按下回缩 0.94；卡片 hover 时一道 115° 高光扫过，边框提亮。</li>
+        <li><code>src/kernel/</code>：模块注册表（registry）、事件总线（bus）、背景自适应（ambient）。</li>
+        <li>新增能力：写组件 → <code>modules.ts</code> 登记 order 与 layers → 壳层按层装配，不改导航与样式。</li>
+        <li>背景采样走原生 <code>backdrop_sample</code>，缺值时按系统外观与时段兜底，结果只写在 CSS 变量上。</li>
       </ul>
     </div>
 
     <div class="notes" style="margin-top:18px">
-      <h3>背景自适应与自适应布局</h3>
-      <img class="shot" src="https://aka.doubaocdn.com/s/IGowuv9gCr" alt="彩色壁纸下的自适应玻璃" />
+      <h3>背景自适应</h3>
+      <img class="shot" src="https://aka.doubaocdn.com/s/IGowuv9gCr" alt="自适应玻璃" />
       <ul>
-        <li>取背后区域的平均亮度与主色：亮壁纸转深色吸光玻璃，暗壁纸用提亮反光玻璃，彩色壁纸薄染同色相。</li>
-        <li>玻璃透背景（blur 28px + saturate 165%），不是把岛贴在不透明黑块上。</li>
-        <li>面板宽度 min(560px, 100vw - 48px)，窄屏双列自动堆叠为单列，高度跟内容走。</li>
+        <li>亮壁纸转深色吸光玻璃，暗壁纸提亮反光，彩色壁纸薄染同色相。</li>
+        <li>玻璃透背景（blur 28px + saturate 165%），不是不透明黑块。</li>
+        <li>面板宽 min(560px, 100vw - 48px)，窄屏四列变两列。</li>
       </ul>
     </div>
 
     <div class="notes" style="margin-top:18px">
       <h3>安装说明</h3>
       <ul>
-        <li>下载后放到固定目录，直接双击 fuyu.exe 运行；配置在 %USERPROFILE%/.fuyu。</li>
-        <li>数据全部保存在本机，不上传云端；MCP 接口只对本机开放。</li>
-        <li>本项目为浮屿衍生版，遵循 AGPL-3.0，源码改动同样开源。</li>
+        <li>下载后放到固定目录直接运行；配置在 %USERPROFILE%/.fuyu（沿用旧目录以保留既有数据）。</li>
+        <li>数据全部本机，不上云；MCP 接口只对本机开放。</li>
+        <li>本项目遵循 AGPL-3.0，修改后分发同样需要开源。</li>
       </ul>
     </div>
   </main>
-  <p class="foot">主按钮为当前安装包直链；长期存放走 GitHub Releases（同名 Release 上传后自动替换）。</p>
+  <p class="foot">主按钮为当前安装包直链；长期存放走 GitHub Releases。</p>
 </body>
 </html>
