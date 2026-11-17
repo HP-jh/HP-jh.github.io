@@ -28,6 +28,7 @@ h1 b{font-weight:650}
 .stat k{display:block;font-size:11px;color:var(--dim);letter-spacing:.4px;margin-bottom:6px}
 .stat v{font-size:14px;font-variant-numeric:tabular-nums}
 .shot{width:100%;border-radius:20px;border:1px solid rgba(175,228,255,.16);box-shadow:0 30px 60px -40px rgba(0,0,0,.9);display:block;margin:4px 0 22px}
+.shot.small{width:auto;max-width:100%;margin:8px auto 18px;background:#0b1014;border-radius:16px}
 .notes{font-size:13px;line-height:1.9;color:var(--dim);border-top:1px solid rgba(255,255,255,.07);padding-top:18px}
 .notes h3{margin:0 0 10px;font-size:13px;color:var(--ink);letter-spacing:.4px}
 .notes li{margin:2px 0}
@@ -38,9 +39,9 @@ ul{margin:0;padding-left:18px}
 </head>
 <body>
   <main class="card">
-    <span class="pill"><i class="dot"></i>Windows · 桌面灵动岛</span>
+    <span class="pill"><i class="dot"></i>Windows · 桌面信息层</span>
     <h1>浮屿 <b>岛上套件</b></h1>
-    <p class="sub">基于浮屿 Fuyu（Tauri 2 / AGPL-3.0）改造的桌面信息层：胶囊 / 面板 / 中心三层，材质随桌面壁纸实时自适应，CPU·内存·GPU·网速·电量·磁盘·温度一张设备卡收完。</p>
+    <p class="sub">基于浮屿 Fuyu（Tauri 2 / AGPL-3.0）改造：胶囊 / 面板 / 中心三层，材质随桌面壁纸实时自适应，CPU·内存·GPU·网速·电量·磁盘·温度一张设备卡收完。</p>
 
     <div class="row">
       <a class="btn" href="https://aka.doubaocdn.com/s/G0CphAD5zP">下载 fuyu.exe</a>
@@ -53,24 +54,34 @@ ul{margin:0;padding-left:18px}
       <div class="stat"><k>系统</k><v>Windows 10 / 11 x64</v></div>
     </div>
 
-    <img class="shot" src="https://aka.doubaocdn.com/s/wrIDUpzfYX" alt="岛上套件 · 彩色壁纸下的自适应玻璃" />
+    <img class="shot" src="https://aka.doubaocdn.com/s/k86VBqRJV8" alt="岛上套件 · 设备中心" />
 
     <div class="notes">
-      <h3>三层结构</h3>
+      <h3>胶囊：鸿蒙式实况窗</h3>
+      <img class="shot small" src="https://aka.doubaocdn.com/s/btBk2xqiis" alt="胶囊双任务" />
       <ul>
-        <li>第一层·胶囊：常驻顶栏，时间 + CPU / 内存微条 + 通知点，材质极低存在感。</li>
-        <li>第二层·面板：点胶囊展开，时间头、五枚页签、议程与快捷入口，日常操作全在这里。</li>
-        <li>第三层·中心：再点一次弹出完整中心，设备卡（CPU / 内存 / GPU / 上下行 / 电量 / 磁盘 / 进程 / 温度）、待办、通知、Obsidian 笔记一屏收完。</li>
-        <li>待办、通知、快捷都从面板下沉为独立小卡，面板上不再堆文字。</li>
+        <li>双任务并列：左是日程实况（图标 + 事件 + 倒计时），右是媒体（封面 + 歌名 + 进度 + 波形），中间一条 1px 发丝分隔。</div>
+        <li>整条胶囊 44px 高、全圆角，背景随壁纸从薄荷渐变到洋红也能自己压暗或提亮。</li>
       </ul>
     </div>
 
     <div class="notes" style="margin-top:18px">
-      <h3>背景自适应</h3>
+      <h3>三层结构与动效</h3>
       <ul>
-        <li>取背后区域的平均亮度与主色，亮壁纸自动转深色吸光玻璃，暗壁纸用提亮反光玻璃，彩色壁纸给一层同色相薄染。</li>
-        <li>背景光会从玻璃里透出来（blur 28px + saturate 165%），不是把岛贴在不透明的黑块上。</li>
-        <li>面板宽度用 min(560px, 100vw - 48px)，窄屏下双列卡片自动堆叠为单列；高度按内容多少自动伸缩。</li>
+        <li>胶囊 → 面板用一镜到底的形变：从 44px 胶囊按顶部锚点展开成 560px 面板，同步去模糊，内容错峰上浮。</li>
+        <li>面板 → 中心是上滑抽屉：下拉把手、80ms 起的分层入场，设备卡先出，待办与通知跟上。</li>
+        <li>待办、通知、快捷都从面板下沉为独立卡片，面板上不再堆字。</li>
+        <li>按钮 hover 上浮 1px、按下回缩 0.94；卡片 hover 时一道 115° 高光扫过，边框提亮。</li>
+      </ul>
+    </div>
+
+    <div class="notes" style="margin-top:18px">
+      <h3>背景自适应与自适应布局</h3>
+      <img class="shot" src="https://aka.doubaocdn.com/s/IGowuv9gCr" alt="彩色壁纸下的自适应玻璃" />
+      <ul>
+        <li>取背后区域的平均亮度与主色：亮壁纸转深色吸光玻璃，暗壁纸用提亮反光玻璃，彩色壁纸薄染同色相。</li>
+        <li>玻璃透背景（blur 28px + saturate 165%），不是把岛贴在不透明黑块上。</li>
+        <li>面板宽度 min(560px, 100vw - 48px)，窄屏双列自动堆叠为单列，高度跟内容走。</li>
       </ul>
     </div>
 
