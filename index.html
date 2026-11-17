@@ -40,7 +40,7 @@ ul{margin:0;padding-left:18px}
   <main class="card">
     <span class="pill"><i class="dot"></i>Windows · 桌面灵动岛</span>
     <h1>浮屿 <b>岛上套件</b></h1>
-    <p class="sub">基于浮屿 Fuyu（Tauri 2 / AGPL-3.0）改造的桌面灵动岛：44px 大时间头、文字胶囊页签、CPU・内存・下行实时三卡，今天日程、最近笔记、剪贴板与快捷操作同屏，面板与卡片统一高曲率圆角、连续高光与分层入场动效。</p>
+    <p class="sub">基于浮屿 Fuyu（Tauri 2 / AGPL-3.0）改造的桌面信息层：胶囊 / 面板 / 中心三层，材质随桌面壁纸实时自适应，CPU·内存·GPU·网速·电量·磁盘·温度一张设备卡收完。</p>
 
     <div class="row">
       <a class="btn" href="https://aka.doubaocdn.com/s/G0CphAD5zP">下载 fuyu.exe</a>
@@ -53,16 +53,24 @@ ul{margin:0;padding-left:18px}
       <div class="stat"><k>系统</k><v>Windows 10 / 11 x64</v></div>
     </div>
 
-    <img class="shot" src="https://aka.doubaocdn.com/s/oIznw14VXs" alt="岛上套件面板预览" />
+    <img class="shot" src="https://aka.doubaocdn.com/s/wrIDUpzfYX" alt="岛上套件 · 彩色壁纸下的自适应玻璃" />
 
     <div class="notes">
-      <h3>本轮界面更新</h3>
+      <h3>三层结构</h3>
       <ul>
-        <li>面板 32px 圆角，外圈冷色描边 + 顶部高光 + 向内收边，外围一层薄荷光晕缓慢呼吸。</li>
-        <li>入场改为分层弹簧：面板整体缩放淡入，统计卡 / 内容卡按 60ms 错峰上浮，页签随后跟进。</li>
-        <li>页签胶囊 28px，选中态冷绿渐变 + 外发光，hover 上浮、按下回缩；统计卡加高光扫过与数值弹入。</li>
-        <li>主色抽成变量，薄荷 / 冰蓝 / 玫瑰 / 紫罗兰四套配色可整体切换，时间头、进度条、状态灯同步换色。</li>
-        <li>日程卡用竖向渐隐分隔线替代孤立圆点，卡片间距统一 11px，hover 微抬 2px 并提亮描边。</li>
+        <li>第一层·胶囊：常驻顶栏，时间 + CPU / 内存微条 + 通知点，材质极低存在感。</li>
+        <li>第二层·面板：点胶囊展开，时间头、五枚页签、议程与快捷入口，日常操作全在这里。</li>
+        <li>第三层·中心：再点一次弹出完整中心，设备卡（CPU / 内存 / GPU / 上下行 / 电量 / 磁盘 / 进程 / 温度）、待办、通知、Obsidian 笔记一屏收完。</li>
+        <li>待办、通知、快捷都从面板下沉为独立小卡，面板上不再堆文字。</li>
+      </ul>
+    </div>
+
+    <div class="notes" style="margin-top:18px">
+      <h3>背景自适应</h3>
+      <ul>
+        <li>取背后区域的平均亮度与主色，亮壁纸自动转深色吸光玻璃，暗壁纸用提亮反光玻璃，彩色壁纸给一层同色相薄染。</li>
+        <li>背景光会从玻璃里透出来（blur 28px + saturate 165%），不是把岛贴在不透明的黑块上。</li>
+        <li>面板宽度用 min(560px, 100vw - 48px)，窄屏下双列卡片自动堆叠为单列；高度按内容多少自动伸缩。</li>
       </ul>
     </div>
 
