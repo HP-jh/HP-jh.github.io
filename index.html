@@ -27,6 +27,7 @@ h1 b{font-weight:650}
 .stat{padding:12px 14px;border-radius:14px;background:var(--card);border:1px solid rgba(255,255,255,.07);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
 .stat k{display:block;font-size:11px;color:var(--dim);letter-spacing:.4px;margin-bottom:6px}
 .stat v{font-size:14px;font-variant-numeric:tabular-nums}
+.shot{width:100%;border-radius:20px;border:1px solid rgba(175,228,255,.16);box-shadow:0 30px 60px -40px rgba(0,0,0,.9);display:block;margin:4px 0 22px}
 .notes{font-size:13px;line-height:1.9;color:var(--dim);border-top:1px solid rgba(255,255,255,.07);padding-top:18px}
 .notes h3{margin:0 0 10px;font-size:13px;color:var(--ink);letter-spacing:.4px}
 .notes li{margin:2px 0}
@@ -39,7 +40,7 @@ ul{margin:0;padding-left:18px}
   <main class="card">
     <span class="pill"><i class="dot"></i>Windows · 桌面灵动岛</span>
     <h1>浮屿 <b>岛上套件</b></h1>
-    <p class="sub">基于浮屿 Fuyu（Tauri 2 / AGPL-3.0）改造的桌面灵动岛：大时间头、文字胶囊页签、CPU・内存・下行实时三卡，今天日程、最近笔记、剪贴板与快捷操作同屏。</p>
+    <p class="sub">基于浮屿 Fuyu（Tauri 2 / AGPL-3.0）改造的桌面灵动岛：44px 大时间头、文字胶囊页签、CPU・内存・下行实时三卡，今天日程、最近笔记、剪贴板与快捷操作同屏，面板与卡片统一高曲率圆角与连续高光。</p>
 
     <div class="row">
       <a class="btn" href="https://aka.doubaocdn.com/s/G0CphAD5zP">下载 fuyu.exe</a>
@@ -52,15 +53,27 @@ ul{margin:0;padding-left:18px}
       <div class="stat"><k>系统</k><v>Windows 10 / 11 x64</v></div>
     </div>
 
+    <img class="shot" src="https://aka.doubaocdn.com/s/vUJZP0C5QE" alt="岛上套件面板预览" />
+
     <div class="notes">
+      <h3>本轮界面更新</h3>
+      <ul>
+        <li>面板圆角提到 32px，外圈加一层冷色描边与顶部高光，向内收 1px 内阴影，靠拢 iOS 连续曲面。</n</li>
+        <li>时间头 38 → 44px、字距收紧；日期与胶囊徽标下移对齐基线，右侧波形与状态灯独立成组。</li>
+        <li>页签胶囊 26 → 28px，选中态改为冷绿渐变加外发光；统计卡与内容卡统一 18–19px 圆角与内高光。</li>
+        <li>日程卡去掉孤立圆点，改为一条竖向渐隐分隔线；卡片间距统一 11px，避免挤在一起。</li>
+      </ul>
+    </div>
+
+    <div class="notes" style="margin-top:18px">
       <h3>安装说明</h3>
       <ul>
-        <li>下载后解压到固定目录，直接双击 fuyu.exe 运行；配置在 %USERPROFILE%/.fuyu。</li>
-        <li>数据全部保存在本机，不上传云端。</li>
+        <li>下载后放到固定目录，直接双击 fuyu.exe 运行；配置在 %USERPROFILE%/.fuyu。</li>
+        <li>数据全部保存在本机，不上传云端；MCP 接口只对本机开放。</li>
         <li>本项目为浮屿衍生版，遵循 AGPL-3.0，源码改动同样开源。</li>
       </ul>
     </div>
   </main>
-  <p class="foot">主按钮为当前安装包直链；长期存放请走 GitHub Releases（同名 Release 上传后自动替换）。</p>
+  <p class="foot">主按钮为当前安装包直链；长期存放走 GitHub Releases（同名 Release 上传后自动替换）。</p>
 </body>
 </html>
