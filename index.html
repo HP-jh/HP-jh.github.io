@@ -8,7 +8,7 @@
 <style>
 :root{--card:rgba(255,255,255,.045);--line:rgba(160,220,255,.12);--ink:#eef4f8;--dim:rgba(238,244,248,.56);--mint:#8cf0dc}
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;color:var(--ink);font-family:"HarmonyOS Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+body{margin:0;min-height:100vh;color:var(--ink);font-family:"Segoe UI Variable Text","HarmonyOS Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
   background:radial-gradient(120% 90% at 18% 6%,#1b3141 0%,#101a23 44%,#07090c 100%),radial-gradient(80% 60% at 84% 98%,rgba(96,54,142,.5),transparent 64%);
   background-attachment:fixed;display:flex;flex-direction:column;align-items:center;padding:72px 24px 56px}
 .card{width:min(680px,100%);border-radius:26px;padding:34px 34px 28px;background:linear-gradient(180deg,rgba(22,29,36,.9),rgba(11,15,19,.95));
@@ -16,7 +16,6 @@ body{margin:0;min-height:100vh;color:var(--ink);font-family:"HarmonyOS Sans SC",
 .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;font-size:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--dim)}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px rgba(140,240,220,.7)}
 h1{margin:20px 0 8px;font-size:38px;font-weight:300;letter-spacing:.5px}
-h1 b{font-weight:650}
 .sub{margin:0 0 26px;color:var(--dim);font-size:14px;line-height:1.75}
 .row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:14px;font-size:14px;text-decoration:none;color:#08110f;font-weight:650;
@@ -42,7 +41,7 @@ ul{margin:0;padding-left:18px}
   <main class="card">
     <span class="pill"><i class="dot"></i>Windows · 桌面信息层</span>
     <h1>屿</h1>
-    <p class="sub">胶囊 / 面板 / 中心三层，材质随桌面壁纸自适应；内核模块化，加能力只需登记一条模块。底层基于 Fuyu（Tauri 2 / AGPL-3.0），界面与信息架构已重做。</p>
+    <p class="sub">胶囊 / 面板 / 中心三层，材质随桌面壁纸自适应；造型随电脑负载与待办状态变化。内核模块化，加能力只需登记一条模块。底层基于 Fuyu（Tauri 2 / AGPL-3.0），界面与信息架构已重做。</p>
 
     <div class="row">
       <a class="btn" href="https://aka.doubaocdn.com/s/G0CphAD5zP">下载安装包</a>
@@ -55,15 +54,24 @@ ul{margin:0;padding-left:18px}
       <div class="stat"><k>系统</k><v>Windows 10 / 11 x64</v></div>
     </div>
 
-    <img class="shot" src="https://aka.doubaocdn.com/s/4rsLijawVv" alt="屿 · 中心" />
+    <img class="shot" src="https://aka.doubaocdn.com/s/FMCKnm9P5l" alt="屿 · 中心" />
 
     <div class="notes">
       <h3>三层结构</h3>
-      <img class="shot small" src="https://aka.doubaocdn.com/s/HkcYL8PXAH" alt="面板" />
+      <img class="shot small" src="https://aka.doubaocdn.com/s/xhgw4Q2fjf" alt="面板" />
       <ul>
-        <li>胶囊：双任务实况窗（日程 + 媒体），全圆角、低存在感；主文本 1–3 字、副文本 1–6 字。</li>
-        <li>面板：时间头、滑动式页签、议程焦点卡；卡片按 60ms 错峰浮起。</li>
-        <li>中心：命令栏 + 数据中心 + 待办 / 通知 / 笔记；待办与通知可互相转换。</li>
+        <li>胶囊：双任务实况窗，主文本 1–3 字、副文本 1–6 字，低存在感。</li>
+        <li>面板：时间头、滑动式页签、议程焦点卡；展开时岛背后出现小风扇。</li>
+        <li>中心：命令栏 + 数据中心 + 待办 / 通知 / 专注 / 联动 / 媒体 / 控制台 / 笔记。</li>
+      </ul>
+    </div>
+
+    <div class="notes" style="margin-top:18px">
+      <h3>造型随状态变化</h3>
+      <ul>
+        <li>内核 <code>useIslandState()</code> 把 CPU / 内存负载 + 待办剩余 + 专注状态合成四种形态。</li>
+        <li>idle 最圆最安静；busy 略拉长；focus 收圆并转冷光；alert 转橙并轻微脉动。</li>
+        <li>小风扇转速 = 6.4s − 负载 × 5.2s，负载低时几乎静止，不抢注意力。</li>
       </ul>
     </div>
 
@@ -71,43 +79,52 @@ ul{margin:0;padding-left:18px}
       <h3>数据中心</h3>
       <ul>
         <li>单例采样：面板与中心共用一个轮询，不再重复拉取 <code>system_stats</code>。</li>
-        <li>趋势带：CPU / 内存 / 下行各 32 点迷你折线，按自身区间自动缩放，小幅波动也看得见。</li>
-        <li>超 80% 转橙告警；GPU、上行、磁盘、温度待原生字段接入。</li>
+        <li>趋势带：CPU / 内存 / 下行各 32 点迷你折线，按自身区间自动缩放。</li>
+        <li>数值未到时显示骨架屏，不再空白；超 80% 转橙告警。</li>
       </ul>
     </div>
 
     <div class="notes" style="margin-top:18px">
       <h3>极简工作台</h3>
       <ul>
-        <li>顶部命令栏：<code>/</code> 或 ⌘K 聚焦，Esc 清空，过滤待办 / 通知 / 笔记 / 剪贴。</li>
-        <li>每张卡一个主操作，不做僵尸按钮；点击笔记直接跳 Obsidian。</li>
+        <li>命令栏：<code>/</code> 或 ⌘K 聚焦，Esc 清空，过滤待办 / 通知 / 笔记 / 剪贴。</li>
+        <li>待办：本机存储，可新建 / 勾选 / 删除，汇总剩余工时；通知一键转待办并带来源。</li>
+        <li>专注计时：25 / 15 / 5 分钟预设 + 环形进度 + 今日累计。</li>
+        <li>控制台：运行时长、摄像头 / 麦克风占用、隐私设置页、岛归位、夜间模式、显示设置。</li>
+      </ul>
+    </div>
+
+    <div class="notes" style="margin-top:18px">
+      <h3>软件联动</h3>
+      <ul>
+        <li>Obsidian、VS Code、GitHub 仓库、B 站、Spotify、微信、Cursor、Steam，走各家 URL scheme。</li>
+        <li>媒体控制接原生：<code>get_media_state</code> / 播放暂停 / 上下首 / 系统音量。</li>
       </ul>
     </div>
 
     <div class="notes" style="margin-top:18px">
       <h3>材质与动效</h3>
       <ul>
-        <li>指针跟随高光：hover 时卡片出现随光标移动的 specular 亮斑。</li>
-        <li>焦点卡用同色薄底，比同级卡亮一档，不再一片同灰。</li>
-        <li>动效令牌 <code>--motion-fast/base/slow</code> + <code>--ease-spring</code>；页签是滑动指示器而不是硬切。</li>
-        <li>中心弹簧入场、行级按压反馈，全程尊重 <code>prefers-reduced-motion</code>。</li>
+        <li>点击波纹从真实按下点扩散；通知小卡从岛下沿滑出，不展开整岛。</li>
+        <li>指针跟随 specular 高光、卡片边缘折射亮线、焦点卡同色薄底。</li>
+        <li>卡片错峰浮起、空态呼吸、滚动边缘渐隐、行级按压反馈。</li>
+        <li>字体：正文可变字重，数字等宽不跳格；全程尊重 <code>prefers-reduced-motion</code>。</li>
       </ul>
     </div>
 
     <div class="notes" style="margin-top:18px">
       <h3>内核模块</h3>
       <ul>
-        <li><code>src/kernel/</code>：模块注册表（registry）、事件总线（bus）、背景自适应（ambient）。</li>
+        <li><code>src/kernel/</code>：注册表 registry、事件总线 bus、背景自适应 ambient、状态 state。</li>
         <li>新增能力：写组件 → 登记 order 与 layers → 壳层按层装配，不改导航与样式。</li>
-        <li>背景采样走原生 <code>backdrop_sample</code>，缺值时按系统外观与时段兜底。</li>
       </ul>
     </div>
 
     <div class="notes" style="margin-top:18px">
       <h3>安装说明</h3>
       <ul>
-        <li>下载后放到固定目录直接运行；配置在 %USERPROFILE%/.fuyu（沿用旧目录以保留既有数据）。</li>
-        <li>数据全部本机，不上云；MCP 接口只对本机开放。</li>
+        <li>下载后放到固定目录直接运行；配置在 %USERPROFILE%/.fuyu。</li>
+        <li>数据全部本机，不上云；接口只对本机开放。</li>
         <li>本项目遵循 AGPL-3.0，修改后分发同样需要开源。</li>
       </ul>
     </div>
